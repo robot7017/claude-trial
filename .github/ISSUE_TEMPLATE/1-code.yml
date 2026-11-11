@@ -1,4 +1,4 @@
-name: 代码
+name: 代码问题
 description: 让 Claude 写代码、改代码或排查报错
 title: "[代码] "
 labels: ["代码"]
