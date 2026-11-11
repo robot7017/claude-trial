@@ -3,19 +3,6 @@ description: 让 Claude 写代码、改代码或排查报错
 title: "[代码] "
 labels: ["代码"]
 body:
-  - type: dropdown
-    id: model
-    attributes:
-      label: 用哪个模型回答
-      description: 不确定就选默认。各模型的区别见 README。
-      options:
-        - Claude Opus 5.5（默认，推荐）
-        - Claude Sonnet 5.5
-        - Claude Haiku 5.5
-        - Claude Fable 5.2（需额外付费，见 README）
-      default: 0
-    validations:
-      required: true
   - type: textarea
     id: background
     attributes:
