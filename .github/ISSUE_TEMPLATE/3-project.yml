@@ -1,0 +1,47 @@
+name: 项目
+description: 涉及整个项目的较大任务：加功能、找 bug、重构、读懂代码结构等
+title: "[项目] "
+labels: ["项目"]
+body:
+  - type: dropdown
+    id: model
+    attributes:
+      label: 用哪个模型回答
+      description: 项目类任务推荐 Opus。各模型的区别见 README。
+      options:
+        - Claude Opus 5.5（默认，推荐）
+        - Claude Sonnet 5.5
+        - Claude Haiku 5.5
+        - Claude Fable 5.2（需额外付费，见 README）
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: about
+    attributes:
+      label: 项目简介
+      description: 项目是做什么的？用什么语言、框架？
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: 代码 / 资料在哪里
+      description: |
+        二选一：
+        - 放进本仓库的 `projects/<项目名>/` 文件夹，这里写文件夹名
+        - 或者贴自己仓库的链接（私有仓库需要把 robot7017 加为协作者）
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 这次想要什么
+      description: 例如：加某个功能、修某个 bug、重构某部分、讲讲整体结构
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 怎样算完成
+      description: 例如：能跑通某个命令、测试通过、输出某种结果
