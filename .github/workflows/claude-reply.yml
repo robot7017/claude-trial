@@ -30,6 +30,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: 下载 Issue 里的图片
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/fetch_images.py "${{ github.repository }}" "${{ github.event.issue.number }}" .issue-images || true
+
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -46,6 +51,9 @@ jobs:
             先用 `gh issue view ${{ github.event.issue.number }} --comments` 读取 Issue 正文和全部评论。
             如果最后一条评论已经是带 `<!-- claude-reply -->` 标记的回复，说明没有新问题，直接结束。
             否则回答最新的问题（新 Issue 就回答正文，有追问就回答追问）。
+            Issue 和评论里的图片已经下载到 .issue-images/ 文件夹，index.txt 写了每张图来自哪条评论。
+            有图片时先用 Read 工具查看相关图片再回答（GitHub 上的图片链接本身打不开，不要去访问）。
+            不要把 .issue-images/ 提交到仓库。
 
             回复规则：
             - 用 `gh issue comment ${{ github.event.issue.number }} --body-file <文件>` 发评论。
@@ -82,6 +90,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: 下载 Issue 里的图片
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 .github/scripts/fetch_images.py "${{ github.repository }}" "${{ github.event.issue.number }}" .issue-images || true
+
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -99,6 +112,9 @@ jobs:
             先用 `gh issue view ${{ github.event.issue.number }} --comments` 读取 Issue 正文和全部评论。
             如果最后一条评论已经是带 `<!-- claude-reply -->` 标记的回复，说明没有新问题，直接结束。
             否则回答最新的问题（新 Issue 就回答正文，有追问就回答追问）。
+            Issue 和评论里的图片已经下载到 .issue-images/ 文件夹，index.txt 写了每张图来自哪条评论。
+            有图片时先用 Read 工具查看相关图片再回答（GitHub 上的图片链接本身打不开，不要去访问）。
+            不要把 .issue-images/ 提交到仓库。
 
             回复规则：
             - 用 `gh issue comment ${{ github.event.issue.number }} --body-file <文件>` 发评论。
